@@ -11,10 +11,10 @@
 }
 
 .bookingBtn {
-  padding: 10px 40px;
+  padding: 10px 20px;
   border: 2px solid purple;
   border-radius: 10px;
-  font-size: 16px;
+  /* font-size: 16px; */
   background-color: white;
   cursor: pointer;
   transition: 0.5s;
