@@ -1,0 +1,30 @@
+.servicesTitle {
+  color: blue;
+  text-align: center;
+}
+
+.servicesContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/*
+mobile media quary
+*/
+
+@media screen and (max-width: 576px) {
+  .servicesContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 992px) {
+  .servicesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+}

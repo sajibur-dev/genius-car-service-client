@@ -1,0 +1,26 @@
+.service {
+  width: 18rem;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.service img {
+  width: 100%;
+}
+
+.bookingBtn {
+  padding: 10px 40px;
+  border: 2px solid purple;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.bookingBtn:hover {
+  color: white;
+  background-color: purple;
+}
