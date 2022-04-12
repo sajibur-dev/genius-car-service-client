@@ -1,28 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from '../../../assets/images/logo-black.png';
+
 
 const Header = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <Link class="navbar-brand" to='/'>Navbar</Link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg navbar-light bg-primary sticky-top"  >
+    <div className="container-fluid">
+      <Link className="navbar-brand" to='/'>
+        <img src={logo} height="50" alt="" />
+      </Link>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <Link class="nav-link" aria-current="page" to='/'>Home</Link>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <NavLink style={({isActive}) => isActive ? {color:'goldenrod'} : {color:'black'}} className="   fs-3 me-5 text-decoration-none" aria-current="page" to='/'>Home</NavLink>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to='/about'>about</Link>
-          </li>
-
-          <li class="nav-item">
-            <Link class="nav-link" to='/signup'>Signup</Link>
+          <li className="nav-item">
+            <NavLink style={({isActive}) => isActive ? {color:'goldenrod'} : {color:'black'}} className="  fs-3 me-5 text-decoration-none" to='/about'>about</NavLink>
           </li>
 
-          <li class="nav-item">
-            <Link class="nav-link" to='/login'>login</Link>
+          <li className="nav-item">
+            <NavLink style={({isActive}) => isActive ? {color:'goldenrod'} : {color:'black'}} className=" fs-3 me-5 text-decoration-none" to='/signup'>Signup</NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink style={({isActive}) => isActive ? {color:'goldenrod'} : {color:'black'}} className="  fs-3 me-5 text-decoration-none" to='/login'>login</NavLink>
           </li>
         </ul>
       </div>
