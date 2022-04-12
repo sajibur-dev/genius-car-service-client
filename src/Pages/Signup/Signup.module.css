@@ -1,0 +1,18 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 10px;
+  /* width: 20rem; */
+  height: 400px;
+}
+
+input {
+  padding: 10px;
+  border: 2px solid purple;
+  border-radius: 10px;
+  font-size: 20px;
+}
