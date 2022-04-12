@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect, useState } from "react";
 import auth from '../firebase';
 
@@ -12,7 +12,9 @@ const useFirebase  = () => {
         })
         return unsubscribe;
     },[])
-    const handleSignInWithEmailAndPassword = (email,password) => {
+
+
+    const handleSignupWithEmailAndPassword = (email,password) => {
         createUserWithEmailAndPassword(auth,email,password)
         .then((result) => {
             const user = result.user;
@@ -23,9 +25,20 @@ const useFirebase  = () => {
         })
     }
 
+    const handleSigninWithEmailAndPassword = (email,password) => {
+        signInWithEmailAndPassword(auth,email,password)
+        .then(() => {
+            console.log('user will be created')
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
     return {
         currentUser,
-        handleSignInWithEmailAndPassword
+        handleSignupWithEmailAndPassword,
+        handleSigninWithEmailAndPassword
     }
 }
 

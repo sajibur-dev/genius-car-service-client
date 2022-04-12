@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import useFirebase from '../../Hooks/useFirebase';
 import styles from './Login.module.css';
 
 
 
 const Login = () => {
     const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('')
+    const [password,setPassword] = useState('');
+    const { currentUser, handleSigninWithEmailAndPassword } = useFirebase();
 
     const handleLogin = (e) => {
         e.preventDefault();
+        handleSigninWithEmailAndPassword(email,password);
     }
+
+    console.log(currentUser)
     return (
         <div className={styles.formContainer}>
             <form onSubmit={handleLogin}>
