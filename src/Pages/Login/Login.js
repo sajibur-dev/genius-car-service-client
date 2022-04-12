@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import useFirebase from '../../Hooks/useFirebase';
-import styles from './Signup.module.css';
+import styles from './Login.module.css';
 
-const Signup = () => {
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('');
-    const  { handleSignInWithEmailAndPassword }  = useFirebase()
-    const handleSubmit = (e) => {
+
+
+const Login = () => {
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('')
+
+    const handleLogin = (e) => {
         e.preventDefault();
-        handleSignInWithEmailAndPassword(email,password);
-        
     }
     return (
         <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
                 <label htmlFor="email">Email : </label>
                 <br />
                 <input type="email" onBlur={(e) => setEmail(e.target.value)} name="email" id="password" required />
@@ -22,10 +21,10 @@ const Signup = () => {
                 <br />
                 <input type="password" onBlur={(e) => setPassword(e.target.value)} name="password" id="password" required />
                 <br /><br />
-                <input type="submit" value="signup" />
+                <input type="submit" value="login" />
             </form>
         </div>
     );
 };
 
-export default Signup;
+export default Login;
