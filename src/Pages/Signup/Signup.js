@@ -1,20 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import useFirebase from '../../Hooks/useFirebase';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase';
 import styles from './Signup.module.css';
+
+
 
 const Signup = () => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('');
-    const  { handleSignupWithEmailAndPassword }  = useFirebase()
+    const navigate = useNavigate();
+    const [
+        createUserWithEmailAndPassword,
+        user,
+    ] = useCreateUserWithEmailAndPassword(auth)
+
+    if(user){
+        navigate('/home')
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleSignupWithEmailAndPassword(email,password);
-        
+        createUserWithEmailAndPassword(email,password);
     }
+    
+
     return (
         <div className={styles.formContainer}>
+            
            <div>
+           <h2>signup..</h2>
            <form onSubmit={handleSubmit}>
                 <label htmlFor="email">Email : </label>
                 <br />
