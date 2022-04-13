@@ -21,9 +21,6 @@ const Header = () => {
             <NavLink style={({isActive}) => isActive ? {color:'goldenrod'} : {color:'black'}} className="  fs-3 me-5 text-decoration-none" to='/about'>about</NavLink>
           </li>
 
-          <li className="nav-item">
-            <NavLink style={({isActive}) => isActive ? {color:'goldenrod'} : {color:'black'}} className=" fs-3 me-5 text-decoration-none" to='/signup'>Signup</NavLink>
-          </li>
 
           <li className="nav-item">
             <NavLink style={({isActive}) => isActive ? {color:'goldenrod'} : {color:'black'}} className="  fs-3 me-5 text-decoration-none" to='/login'>login</NavLink>

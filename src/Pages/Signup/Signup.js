@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import useFirebase from '../../Hooks/useFirebase';
 import styles from './Signup.module.css';
 
@@ -13,7 +14,8 @@ const Signup = () => {
     }
     return (
         <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit}>
+           <div>
+           <form onSubmit={handleSubmit}>
                 <label htmlFor="email">Email : </label>
                 <br />
                 <input type="email" onBlur={(e) => setEmail(e.target.value)} name="email" id="password" required />
@@ -24,6 +26,8 @@ const Signup = () => {
                 <br /><br />
                 <input type="submit" value="signup" />
             </form>
+            <p>Already have an account ? <Link to="/login">Login</Link></p>
+           </div>
         </div>
     );
 };

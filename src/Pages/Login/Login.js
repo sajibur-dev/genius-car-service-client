@@ -1,35 +1,47 @@
-import React, { useState } from 'react';
-import useFirebase from '../../Hooks/useFirebase';
-import styles from './Login.module.css';
-
-
+import React, { useRef } from "react";
+import { Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import useFirebase from "../../Hooks/useFirebase";
 
 const Login = () => {
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    const { currentUser, handleSigninWithEmailAndPassword } = useFirebase();
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+  const { currentUser, handleSigninWithEmailAndPassword } = useFirebase();
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        handleSigninWithEmailAndPassword(email,password);
-    }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    console.log(email,password)
+  };
 
-    console.log(currentUser)
-    return (
-        <div className={styles.formContainer}>
-            <form onSubmit={handleLogin}>
-                <label htmlFor="email">Email : </label>
-                <br />
-                <input type="email" onBlur={(e) => setEmail(e.target.value)} name="email" id="password" required />
-                <br /><br />
-                <label htmlFor="password">Password</label>
-                <br />
-                <input type="password" onBlur={(e) => setPassword(e.target.value)} name="password" id="password" required />
-                <br /><br />
-                <input type="submit" value="login" />
-            </form>
-        </div>
-    );
+  console.log(currentUser);
+  return (
+    <div className="container w-50 mx-auto">
+        <h2 className="text-primary text-center mt-3">Login...</h2>
+      <Form onSubmit={handleLogin}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" ref={emailRef} required/>
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" ref={passwordRef} required/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          login
+        </Button>
+      </Form>
+      <p>New to genius car ? <Link to='/signup'>singup</Link></p>
+    </div>
+  );
 };
 
 export default Login;

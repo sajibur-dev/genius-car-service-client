@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const { name, img, price, description } = service;
+  const navigate =  useNavigate()
+  const { id,name, img, price, description } = service;
   return (
     <div className="card" style={{width: '18rem'}}>
       <img src={img} className="card-img-top w-100" alt="..." />
@@ -12,9 +13,9 @@ const Service = ({ service }) => {
         <p className="card-text">
           {description}
         </p>
-        <Link to='#' className="btn btn-primary">
+        <button onClick={() =>navigate(`/service/${id}`) } className="btn btn-primary">
           Go somewhere
-        </Link>
+        </button>
       </div>
     </div>
   );
