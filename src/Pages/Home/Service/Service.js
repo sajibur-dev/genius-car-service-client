@@ -14,7 +14,7 @@ const Service = ({ service }) => {
           {description}
         </p>
         <button onClick={() =>navigate(`/service/${id}`) } className="btn btn-primary">
-          Go somewhere
+          see details
         </button>
       </div>
     </div>
