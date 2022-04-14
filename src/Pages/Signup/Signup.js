@@ -27,9 +27,8 @@ const Signup = () => {
 
     return (
         <div className={styles.formContainer}>
-            
            <div>
-           <h2>signup..</h2>
+           <h2>signup...</h2>
            <form onSubmit={handleSubmit}>
                 <input type="email" onBlur={(e) => setEmail(e.target.value)} name="email" id="password" placeholder='email' required />
                 <br /><br />
