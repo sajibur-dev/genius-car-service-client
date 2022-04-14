@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase';
-import styles from './Signup.module.css';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 
 
@@ -26,19 +27,23 @@ const Signup = () => {
     
 
     return (
-        <div className={styles.formContainer}>
-           <div>
-           <h2>signup...</h2>
-           <form onSubmit={handleSubmit}>
-                <input type="email" onBlur={(e) => setEmail(e.target.value)} name="email" id="password" placeholder='email' required />
-                <br /><br />
-                <input type="password" onBlur={(e) => setPassword(e.target.value)} name="password" id="password" required placeholder='password' />
-                <br /><br />
-                <input className='btn btn-primary' type="submit" value="signup" />
-            </form>
-            <p>Already have an account ? <Link to="/login" className="text-decoration-none fs-3">Login</Link></p>
-           </div>
-        </div>
+        <div className="container w-50 mx-auto">
+        <h2 className="text-primary text-center mt-3">Signup...</h2>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-5" controlId="formBasicEmail">
+          <Form.Control type="email" className="p-3 border-2 border-dark fs-3 ouline-none" placeholder="Enter email" onBlur={(e) => setEmail(e.target.value)} required/>
+        </Form.Group>
+
+        <Form.Group className="mb-5" controlId="formBasicPassword">
+          <Form.Control className="p-3 border-2 border-dark fs-3 outline-none" type="password" placeholder="Password" onBlur={(e) => setPassword(e.target.value)} required/>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          signup
+        </Button>
+      </Form>
+      <p>already have an account ? <Link to='/login' className="text-decoration-none fs-3">login</Link></p>
+      <SocialLogin/>
+    </div>
     );
 };
 
