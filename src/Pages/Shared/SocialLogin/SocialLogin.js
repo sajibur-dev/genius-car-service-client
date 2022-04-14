@@ -1,5 +1,8 @@
 import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithGithub,
+  useSignInWithGoogle
+} from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import facebookLogo from "../../../assets/images/facebook.png";
 import githubLogo from "../../../assets/images/github.png";
@@ -8,9 +11,12 @@ import auth from "../../../firebase";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  
-  if (user) {
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+  const [signInWithGithub, githubUser, githubLoading, githubError] =
+    useSignInWithGithub(auth);
+
+  if (googleUser || githubUser) {
     navigate("/");
   }
   return (
@@ -20,7 +26,12 @@ const SocialLogin = () => {
         <p className="mt-2 mx-2">or</p>
         <div style={{ height: "1px" }} className="bg-primary w-50"></div>
       </div>
-      {error && <p className="text-danger">{error.message}</p>}
+      {(googleLoading || githubLoading) && (
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+      )}
+      {(googleError || githubError) && <p className="text-danger">{googleError.message}</p>}
       <div>
         <button
           className="btn btn-info d-block mx-auto w-50 my-3"
@@ -33,7 +44,10 @@ const SocialLogin = () => {
           <img src={facebookLogo} alt="" />{" "}
           <span className="px-3">facebook login</span>
         </button>
-        <button className="btn btn-info d-block mx-auto w-50 my-3">
+        <button
+          onClick={() => signInWithGithub()}
+          className="btn btn-info d-block mx-auto w-50 my-3"
+        >
           <img src={githubLogo} alt="" />{" "}
           <span className="px-3">github login</span>
         </button>
