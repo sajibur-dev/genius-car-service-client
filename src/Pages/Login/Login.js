@@ -36,17 +36,12 @@ const Login = () => {
     <div className="container w-50 mx-auto">
         <h2 className="text-primary text-center mt-3">Login...</h2>
       <Form onSubmit={handleLogin}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" ref={emailRef} required/>
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
+        <Form.Group className="mb-5" controlId="formBasicEmail">
+          <Form.Control type="email" className="p-3 border-2 border-dark fs-3 ouline-none" placeholder="Enter email" ref={emailRef} required/>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" ref={passwordRef} required/>
+        <Form.Group className="mb-5" controlId="formBasicPassword">
+          <Form.Control className="p-3 border-2 border-dark fs-3 outline-none" type="password" placeholder="Password" ref={passwordRef} required/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
@@ -55,7 +50,7 @@ const Login = () => {
           login
         </Button>
       </Form>
-      <p>New to genius car ? <Link to='/signup'>singup</Link></p>
+      <p>New to genius car ? <Link to='/signup' className="text-decoration-none fs-3">singup</Link></p>
     </div>
   );
 };

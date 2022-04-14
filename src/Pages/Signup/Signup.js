@@ -31,17 +31,13 @@ const Signup = () => {
            <div>
            <h2>signup..</h2>
            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email : </label>
-                <br />
-                <input type="email" onBlur={(e) => setEmail(e.target.value)} name="email" id="password" required />
+                <input type="email" onBlur={(e) => setEmail(e.target.value)} name="email" id="password" placeholder='email' required />
                 <br /><br />
-                <label htmlFor="password">Password</label>
-                <br />
-                <input type="password" onBlur={(e) => setPassword(e.target.value)} name="password" id="password" required />
+                <input type="password" onBlur={(e) => setPassword(e.target.value)} name="password" id="password" required placeholder='password' />
                 <br /><br />
-                <input type="submit" value="signup" />
+                <input className='btn btn-primary' type="submit" value="signup" />
             </form>
-            <p>Already have an account ? <Link to="/login">Login</Link></p>
+            <p>Already have an account ? <Link to="/login" className="text-decoration-none fs-3">Login</Link></p>
            </div>
         </div>
     );
