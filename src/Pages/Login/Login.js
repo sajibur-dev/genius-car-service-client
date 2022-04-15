@@ -5,6 +5,8 @@ import {
   useSignInWithEmailAndPassword
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import auth from "../../firebase";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
@@ -74,18 +76,22 @@ const Login = () => {
       <p>
         Forgate password ?{" "}
         <button
-          
           onClick={async () => {
             const email = emailRef.current.value;
             await sendPasswordResetEmail(email);
-            alert("sent email");
+            if(email){
+              toast("sent email");
+            } else {
+              toast("please provide an email")
+            }
           }}
-          className="btn btn-info"
+          className="btn btn-link text-decoration-none text-primary"
         >
           reset password
         </button>
       </p>
       <SocialLogin />
+      <ToastContainer/>
     </div>
   );
 };
