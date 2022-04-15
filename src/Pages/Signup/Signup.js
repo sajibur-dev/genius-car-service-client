@@ -72,6 +72,7 @@ const Signup = () => {
             label="terms and condition"
           />
         </Form.Group>
+        {error && <p>{error.message}</p>}
         <Button
           disabled={!agree}
           className="w-50 mx-auto d-block"
@@ -81,6 +82,7 @@ const Signup = () => {
           signup
         </Button>
       </Form>
+
       <p>
         already have an account ?{" "}
         <Link to="/login" className="text-decoration-none fs-3">
