@@ -70,19 +70,20 @@ const Login = () => {
           singup
         </Link>
       </p>
+
       <p>
         Forgate password ?{" "}
-        <Link
-          to="/signup"
+        <button
+          
           onClick={async () => {
             const email = emailRef.current.value;
             await sendPasswordResetEmail(email);
             alert("sent email");
           }}
-          className="text-primary text-decoration-none fs-3"
+          className="btn btn-info"
         >
           reset password
-        </Link>
+        </button>
       </p>
       <SocialLogin />
     </div>

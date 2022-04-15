@@ -72,7 +72,6 @@ const Signup = () => {
             label="terms and condition"
           />
         </Form.Group>
-{error && console.log(error.message)}
         <Button
           disabled={!agree}
           className="w-50 mx-auto d-block"
