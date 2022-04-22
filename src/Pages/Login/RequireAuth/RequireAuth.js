@@ -9,8 +9,17 @@ const RequireAuth = ({children}) => {
     if(loading){
         return <p>loading ...</p>
     }
+    console.log(user)
+
     if(!user){
        return  <Navigate to='/login' state={{from : location}} replace/>
+    }
+    if(user.providerData[0].providerId === 'password' && !user.emailVerified){
+        return (
+            <div>
+                <h1>user does'nt varified</h1>
+            </div>
+        )
     }
     return children;
 };

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./Global.css";
 import About from "./Pages/About/About";
+import AddService from "./Pages/AddService/AddService";
 import Home from "./Pages/Home/Home";
 import ServiceDetail from "./Pages/Home/Service/ServiceDetail/ServiceDetail";
 import Login from "./Pages/Login/Login";
@@ -23,6 +24,14 @@ function App() {
             element={
               <RequireAuth>
                 <ServiceDetail />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/addservice"
+            element={
+              <RequireAuth>
+                <AddService />
               </RequireAuth>
             }
           />

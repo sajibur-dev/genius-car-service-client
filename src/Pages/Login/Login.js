@@ -19,7 +19,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const [signInWithEmailAndPassword, user, signInError] =
-    useSignInWithEmailAndPassword(auth);
+    useSignInWithEmailAndPassword(auth,{sendEmailVerification:true});
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
   if (user) {
