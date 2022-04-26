@@ -47,6 +47,18 @@ const Header = () => {
                     }
                     className="   fs-3 me-5 text-decoration-none"
                     aria-current="page"
+                    to="/order"
+                  >
+                    order
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    style={({ isActive }) =>
+                      isActive ? { color: "goldenrod" } : { color: "black" }
+                    }
+                    className="   fs-3 me-5 text-decoration-none"
+                    aria-current="page"
                     to="/addservice"
                   >
                     add service

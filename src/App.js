@@ -7,6 +7,8 @@ import ServiceDetail from "./Pages/Home/Service/ServiceDetail/ServiceDetail";
 import Login from "./Pages/Login/Login";
 import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 import ManageServices from "./Pages/ManageServices/ManageServices";
+import Order from "./Pages/OrderCheckout/Order/Order";
+import OrderCheckout from "./Pages/OrderCheckout/OrderCheckout";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Header/Header";
 import Signup from "./Pages/Signup/Signup";
@@ -20,11 +22,20 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/service/:serviceId" element={<ServiceDetail />} />
           <Route
-            path="/service/:serviceId"
+            path="/checkout/:serviceId"
             element={
               <RequireAuth>
-                <ServiceDetail />
+                <OrderCheckout />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/order"
+            element={
+              <RequireAuth>
+                <Order />
               </RequireAuth>
             }
           />

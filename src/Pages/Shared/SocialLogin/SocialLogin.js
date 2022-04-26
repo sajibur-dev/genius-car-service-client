@@ -3,7 +3,7 @@ import {
   useSignInWithGithub,
   useSignInWithGoogle
 } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import facebookLogo from "../../../assets/images/facebook.png";
 import githubLogo from "../../../assets/images/github.png";
 import Googlelogo from "../../../assets/images/google.png";
@@ -15,9 +15,12 @@ const SocialLogin = () => {
     useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, githubLoading, githubError] =
     useSignInWithGithub(auth);
+    const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   if (googleUser || githubUser) {
-    navigate("/");
+    navigate(from,{replace:true});
   }
   return (
     <div>
