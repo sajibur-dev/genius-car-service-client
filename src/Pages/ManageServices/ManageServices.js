@@ -4,7 +4,7 @@ import useServices from '../../Hooks/useServices';
 const ManageServices = () => {
     const [services,setServices] =  useServices();
     const deleteService = (id) => {
-        const url = `http://localhost:5000/service/${id}`;
+        const url = `https://powerful-sands-64241.herokuapp.com/service/${id}`;
         fetch(url,{
             method:'DELETE'
         })

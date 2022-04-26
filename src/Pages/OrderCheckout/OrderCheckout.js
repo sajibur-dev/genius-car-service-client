@@ -31,7 +31,7 @@ const OrderCheckout = () => {
       phone: e.target.phone.value,
     };
 
-    axios.post('http://localhost:5000/order',order)
+    axios.post('https://powerful-sands-64241.herokuapp.com/order',order)
     .then((res) => {
         console.log(res.data)
         const data = res.data;
