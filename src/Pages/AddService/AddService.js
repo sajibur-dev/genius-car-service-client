@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
 
 const AddService = () => {
   const { register, handleSubmit } = useForm();
@@ -14,7 +15,9 @@ const AddService = () => {
           body:JSON.stringify(data)
       })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        toast('service is saved . you can see your sevice in home page');
+      })
   };
 
   return (
@@ -26,6 +29,7 @@ const AddService = () => {
         <input className="mb-3" type="text" {...register("img", { required: true })} placeholder="photo url"/>
         <input type="submit" value="add service" />
       </form>
+      <ToastContainer/>
     </div>
   );
 };

@@ -21,10 +21,15 @@ const Order = () => {
                 navigate('/login');
             }
         })
-    },[navigate,user.email])
+    },[navigate,user?.email])
     return (
-        <div>
-            <h1>this is Order page... {orders.length}</h1>
+        <div className='w-50 mx-auto'>
+            <h1 className='my-5'>Your orders :</h1>
+            {
+                orders.map((order) => <div key={order._id}>
+                    <p>{order.service}</p>
+                </div>)
+            }
         </div>
     );
 };

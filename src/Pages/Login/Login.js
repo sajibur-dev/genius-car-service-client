@@ -1,14 +1,14 @@
-import axios from "axios";
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import {
-    useSendPasswordResetEmail,
-    useSignInWithEmailAndPassword
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../../firebase";
+import useToken from "../../Hooks/useToken";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
@@ -22,8 +22,9 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, signInError] =
     useSignInWithEmailAndPassword(auth,{sendEmailVerification:true});
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+  const [token] = useToken(user);
 
-  if (user) {
+  if (token) {
     navigate(from, { replace: true });
   }
 
@@ -32,8 +33,6 @@ const Login = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     await signInWithEmailAndPassword(email, password);
-    const {data} = await axios.post('https://powerful-sands-64241.herokuapp.com/login',{email});
-    localStorage.setItem('accessToken',data)
   };
 
   return (

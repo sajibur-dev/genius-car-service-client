@@ -6,6 +6,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase";
+import useToken from "../../Hooks/useToken";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Signup = () => {
@@ -19,8 +20,9 @@ const Signup = () => {
     useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
 
   const [updateProfile] = useUpdateProfile(auth);
+  const [token] = useToken(user);
 
-  if (user) {
+  if (token) {
     navigate("/home");
     console.log('user',user)
   }

@@ -8,6 +8,7 @@ import facebookLogo from "../../../assets/images/facebook.png";
 import githubLogo from "../../../assets/images/github.png";
 import Googlelogo from "../../../assets/images/google.png";
 import auth from "../../../firebase";
+import useToken from "../../../Hooks/useToken";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
@@ -15,11 +16,12 @@ const SocialLogin = () => {
     useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, githubLoading, githubError] =
     useSignInWithGithub(auth);
+    const [token] = useToken(googleUser || githubUser)
     const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
 
-  if (googleUser || githubUser) {
+  if (token) {
     navigate(from,{replace:true});
   }
   return (
